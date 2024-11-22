@@ -1,8 +1,9 @@
 import Modal from 'react-modal';
 import { MdOutlineClose } from "react-icons/md";
+import { ImageModalProps } from './ImageModal.types';
 import styles from './ImageModal.module.css';
 
-const ImageModal = ({modalIsOpen, onCloseModal, imgModal}) => {
+const ImageModal: React.FC<ImageModalProps> = ({modalIsOpen, onCloseModal, imgModal}) => {
     return (
           <Modal
             isOpen={modalIsOpen}
