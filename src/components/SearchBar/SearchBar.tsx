@@ -1,12 +1,14 @@
 import { IoSearchSharp } from "react-icons/io5";
-import styles from './SearchBar.module.css';
 import toast, { Toaster } from "react-hot-toast";
+import { SearchBarProps } from "./SearchBar.types";
+import styles from './SearchBar.module.css';
+import { FormEvent } from "react";
 
-const SearchBar = ({onSubmit}) => {
-  const handleSubmit = (evt) => {
+const SearchBar: React.FC<SearchBarProps> = ({onSubmit}) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const form = evt.target;
-    const value = form.elements.text.value.trim();
+    const form = evt.target as HTMLFormElement;
+    const value = (form.elements.namedItem("text") as HTMLInputElement).value.trim();
     if(value === '' || value === null){
       toast.error('This is an invalid request. Try again!');
       return;
